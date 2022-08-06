@@ -229,6 +229,10 @@ mrbc_esp32_wifi_setup_ent_peap(mrb_vm* vm, mrb_value* v, int argc)
   ESP_ERROR_CHECK( esp_wifi_sta_wpa2_ent_set_identity((uint8_t*)id,       strlen(id)) );
   ESP_ERROR_CHECK( esp_wifi_sta_wpa2_ent_set_username((uint8_t*)username, strlen(username)) );
   ESP_ERROR_CHECK( esp_wifi_sta_wpa2_ent_set_password((uint8_t*)password, strlen(password)) );
+  // * https://www.esp32.com/viewtopic.php?t=3108
+  // * https://github.com/espressif/arduino-esp32/issues/1744
+  // esp_wpa2_config_t wpa2_config = WPA2_CONFIG_INIT_DEFAULT();
+  // ESP_ERROR_CHECK( esp_wifi_sta_wpa2_ent_enable(&wpa2_config) );
   ESP_ERROR_CHECK( esp_wifi_sta_wpa2_ent_enable() );
 }
 
